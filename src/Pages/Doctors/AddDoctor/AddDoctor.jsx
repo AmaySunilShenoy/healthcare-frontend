@@ -57,7 +57,7 @@ const AddDoctor = () => {
     specialist: "",
     address: "",
     salary: "",
-    available : "",
+    available_time : "",
   });
   
   const handleChange = (event) => {
@@ -78,7 +78,17 @@ const AddDoctor = () => {
     // formData.append("image", image); // <-- append the image to the formData
     // formData.append("created_at", date);
     // formData.append("approved", true);
-    instance.post("/doctor", formData).then((res) => {
+    instance.post("/doctor", {
+      "first_name": formData.first_name,
+      "last_name": formData.last_name,
+      "email": formData.email,
+      "phone": formData.phone,
+      "fee": formData.fee,
+      "age": formData.age,
+      "specialist": formData.specialist,
+      "address": formData.address,
+      "salary": formData.salary,
+      "available_time": formData.available_time}).then((res) => {
       if(res.data.id){
         alert("Data saved successfully")
       }
