@@ -47,6 +47,18 @@ const AddDoctor = () => {
   const [personName, setPersonName] = React.useState([]);
   const [date, setDate] = React.useState(new Date().toDateString());
   const [image, setImage] = useState(null);
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    fee: "",
+    age: "",
+    specialist: "",
+    address: "",
+    salary: "",
+    available
+  });
   
   const handleChange = (event) => {
     const {
@@ -62,7 +74,6 @@ const AddDoctor = () => {
     e.preventDefault();
     console.log('reached')
     // e.preventDefault();
-    const formData = new FormData(e.target);
     // // const name = formData.get("name");
     // formData.append("image", image); // <-- append the image to the formData
     // formData.append("created_at", date);
@@ -113,7 +124,9 @@ const AddDoctor = () => {
             <TextField
               id="standard-basic"
               label="Enter name"
-              name="first_name"
+              name='first_name'
+              value={formData.first_name}
+              onChange={(e) => setFormData({...formData, first_name: e.target.value})}
               required
               fullWidth
             />
@@ -127,6 +140,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Enter name"
               name="last_name"
+              value={formData.last_name}
+              onChange={(e) => setFormData({...formData, last_name: e.target.value})}
               required
               fullWidth
             />
@@ -140,6 +155,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Enter email"
               name="email"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
               required
               fullWidth
             />
@@ -153,6 +170,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Enter number"
               name="phone"
+              value={formData.phone}
+              onChange={(e) => setFormData({...formData, phone: e.target.value})}
               required
               fullWidth
             />
@@ -166,6 +185,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Set Fees"
               name="fee"
+              value={formData.fee}
+              onChange={(e) => setFormData({...formData, fee: e.target.value})}
               required
               fullWidth
             />
@@ -179,6 +200,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Set Age"
               name="age"
+              value={formData.age}
+              onChange={(e) => setFormData({...formData, age: e.target.value})}
               required
               fullWidth
             />
@@ -192,6 +215,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Speciality"
               name="specialist"
+              value={formData.specialist}
+              onChange={(e) => setFormData({...formData, specialist: e.target.value})}
               required
               fullWidth
             />
@@ -206,6 +231,9 @@ const AddDoctor = () => {
               label="Enter Address"
               variant="standard"
               name="address"
+              value={formData.address}
+              onChange={(e) => setFormData({...formData, address: e.target.value})}
+              required
               multiline
               rows={5}
               fullWidth
@@ -260,6 +288,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Enter salary"
               name="salary"
+              value={formData.salary}
+              onChange={(e) => setFormData({...formData, salary: e.target.value})}  
               // required
               fullWidth
             />
@@ -273,6 +303,8 @@ const AddDoctor = () => {
               id="standard-basic"
               label="Eg: 8pm-10pm"
               name="available_time"
+              value={formData.available_time}
+              onChange={(e) => setFormData({...formData, available_time: e.target.value})}
               required
               fullWidth
             />
@@ -289,20 +321,15 @@ const AddDoctor = () => {
             <Typography variant="OVERLINE TEXT">Gender</Typography>
           </Grid>
           <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
+            <TextField
+              id="standard-basic"
+              label="Male/Female/Other"
               name="gender"
+              value={formData.gender}
+              onChange={(e) => setFormData({...formData, gender: e.target.value})}
               required
-            >
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-            </RadioGroup>
+              fullWidth
+            />
           </Grid>
           {/* add image */}
           {/* <Grid item xs={12} md={4}>
