@@ -46,11 +46,11 @@ const Appointment = () => {
   }
   return (
     <Box
-        sx={{ background: "#fff", height:{md:'80vh', lg:'80vh', xs:'100%',sm:'100%'},}}
+        sx={{ background: "#fff", height:{md:'80vh', lg:'80vh', xs:'100%',sm:'100%'}, width: '100%'}}
         style={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)" }}
       >
         <form onSubmit={handleSubmit} className="text-center" >
-          <Box className="appointment" sx={{ paddingTop:{md:'5rem', lg:'5rem'} }}>
+          <Box className="appointment" sx={{ paddingTop:{md:'5rem', lg:'5rem'}, width: '100%' }}>
             <Typography variant="h6" style={{ padding: "2rem 0", marginTop: "-1rem" }}>DOCTOR APPOINMENT CHOOSEN </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} md={4}>

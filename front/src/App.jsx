@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import './App.css';
-import Home from "./Pages/Home/Home/Home";
+import Home from "./Pages/Home/Home";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Staffs from "./Pages/Staffs/Staffs";
 import Appointment from "./Pages/Appointments/Appointment";
@@ -21,6 +21,7 @@ import AddPatient from "./Pages/Patients/AddPatients/AddPatient";
 import Patients from "./Pages/Patients/Patients/Patients";
 import PatientDetails from "./Pages/Patients/PatientsDetails/PatientDetails";
 import ApproveDoctor from "./Pages/Doctors/ApproveDoctor/ApproveDoctor";
+import PublicRoute from "./Pages/PublicRoute/PublicRoute";
 
 
 function App() {
@@ -29,10 +30,16 @@ function App() {
       {/* <AuthProvider>
 
       </AuthProvider> */}
+
       <Router>
         <Routes>
+          
+          <Route path="login" element={<Login />} />
+          <Route path="registration" element={<Registration />} />
+          
           {/* NESTED ROUTING APPLIED */}
-          <Route path="/" element={<Dashboard />} >
+          <Route path="/" element={<PublicRoute />}>
+            <Route path="/" element={<Dashboard />} >
             <Route index element={<Home></Home>} />
             <Route path="doctors" element={<PatientViewDoctor />} />
             <Route path="addDoctor" element={<AddDoctor />} />
@@ -49,9 +56,10 @@ function App() {
             <Route path="appointment" element={<Appointment />}>
               <Route path=":email" element={<Appointment />} />
             </Route>
-            <Route path="login" element={<Login />} />
-            <Route path="registration" element={<Registration />} />
+            {/* <Route path="login" element={<Login />} />
+            <Route path="registration" element={<Registration />} /> */}
             <Route path="*" element={<PageNotFound />} />
+          </Route>
           </Route>
         </Routes>
         <Footer></Footer>

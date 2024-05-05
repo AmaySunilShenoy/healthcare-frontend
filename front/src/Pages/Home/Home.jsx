@@ -2,12 +2,12 @@ import { Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 // import Map from '../../Map/Map'
-import Banner from '../Banner/Banner'
-import DetailsChart from '../DetailsChart/DetailsChart'
-import Feedback from '../Feedback/Feedback'
-import RadialChart from '../PatientAgeChart/RadialChart'
-import TodaysDoctors from '../TodaysDoctors/TodaysDoctors'
-import UserInfo from '../UserInfo/UserInfo'
+import Banner from '../../components/Home/Banner'
+import DetailsChart from '../../components/Home/DetailsChart'
+import Feedback from '../../components/Home/Feedback'
+import RadialChart from '../../components/Home/RadialChart'
+import TodaysDoctors from '../../components/Home/TodaysDoctors'
+import UserInfo from '../../components/Home/UserInfo'
 
 const Home = () => {
   return (

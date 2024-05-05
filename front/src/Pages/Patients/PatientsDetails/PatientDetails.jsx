@@ -9,12 +9,13 @@ import { Box } from '@mui/system';
 const PatientDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState({})
-  console.log(details)
-  useEffect(() => {
-    fetch(`http://localhost:5000/patients/${id}`)
-      .then(res => res.json())
-      .then(data => setDetails(data))
-  }, [id])
+
+  // console.log(details)
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/patients/${id}`)
+  //     .then(res => res.json())
+  //     .then(data => setDetails(data))
+  // }, [id])
 
   return (
     <Box className='Container' sx={{ height: { xs: '100%', md: '80vh', display: 'grid', } }}>

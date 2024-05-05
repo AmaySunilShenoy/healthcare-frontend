@@ -9,12 +9,40 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { NavLink } from "react-router-dom";
 
 export default function TodaysDoctors() {
-  const [doctors, setDoctors] = React.useState([]);
-  React.useEffect(() => {
-    fetch("http://localhost:5000/doctors")
-      .then((res) => res.json())
-      .then((data) => setDoctors(data));
-  }, []);
+  const [doctors, setDoctors] = React.useState([
+    {
+      _id: "1",
+      name: "Dr. John Doe",
+      email: "john.email.com",
+      gender: 'male',
+      specialist: 'dentist',
+      fee: 500,
+      time: "10:00 AM - 12:00 PM",
+    },
+    {
+      _id: "2",
+      name: "Dr. Jane Doe",
+      email: "jane.email.com",
+      gender: 'female',
+      specialist: 'dentist',
+      fee: 500,
+      time: "10:00 AM - 12:00 PM",
+    },
+    {
+      _id: "3",
+      name: "Dr. Jane Doe",
+      email: "jane.email.com",
+      gender: 'female',
+      specialist: 'dentist',
+      fee: 500,
+      time: "10:00 AM - 12:00 PM",
+    },
+  ]);
+  // React.useEffect(() => {
+  //   fetch("http://localhost:5000/doctors")
+  //     .then((res) => res.json())
+  //     .then((data) => setDoctors(data));
+  // }, []);
   return (
     <Grid
       container

@@ -46,6 +46,7 @@ const AddDoctor = () => {
   const [personName, setPersonName] = React.useState([]);
   const [date, setDate] = React.useState(new Date().toDateString());
   const [image, setImage] = useState(null);
+  
   const handleChange = (event) => {
     const {
       target: { value },
@@ -58,21 +59,23 @@ const AddDoctor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    // const name = formData.get("name");
-    formData.append("image", image); // <-- append the image to the formData
-    formData.append("created_at", date);
-    formData.append("approved", true);
-    fetch("http://localhost:5000/doctors", {
-      method: "POST",
-      body: formData, // <-- send the formData in the body of the request
-    })
-      .then((res) => res.json())
-      .then((success) => {
-        if (success) {
-          alert("Doctor added successfully");
-        }
-      });
+    console.log('reached')
+    // e.preventDefault();
+    // const formData = new FormData(e.target);
+    // // const name = formData.get("name");
+    // formData.append("image", image); // <-- append the image to the formData
+    // formData.append("created_at", date);
+    // formData.append("approved", true);
+    // fetch("http://localhost:5000/doctors", {
+    //   method: "POST",
+    //   body: formData, // <-- send the formData in the body of the request
+    // })
+    //   .then((res) => res.json())
+    //   .then((success) => {
+    //     if (success) {
+    //       alert("Doctor added successfully");
+    //     }
+    //   });
   };
 
   return (

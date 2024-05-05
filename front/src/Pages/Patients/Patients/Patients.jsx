@@ -11,18 +11,40 @@ import { Typography } from "@mui/material";
 import { AiOutlineDelete } from "react-icons/ai";
 import img from "../../../utils/no-patient.png";
 
-export default function Patients() {
-  const [patientsData, setpatientsData] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    fetch("http://localhost:5000/appointments")
-      .then((res) => res.json())
-      .then((patientsData) => {
-        setpatientsData(patientsData)
-        setLoading(false)
-      });
-  }, []);
+const myPatientsData = [
+  {
+    _id: 1,
+    patientName: "Millie Cross",
+    doctorName: "Dr. John Doe",
+    doctorFee: "1000",
+    phone: "+1 (875) 489-3889",
+    date: "2021-10-10",
+    gender: 'female',
+  },
+  {
+    _id: 2,
+    patientName: "Callahan Rowe",
+    doctorName: "Dr. John Doe",
+    doctorFee: "1500",
+    phone: "+1 (950) 468-2478",
+    date: "2022-10-10",
+    gender: 'male',
+  },
+]
+
+export default function Patients() {
+  const [patientsData, setpatientsData] = React.useState(myPatientsData);
+  const [loading, setLoading] = React.useState(false);
+
+  // React.useEffect(() => {
+  //   fetch("http://localhost:5000/appointments")
+  //     .then((res) => res.json())
+  //     .then((patientsData) => {
+  //       setpatientsData(patientsData)
+  //       setLoading(false)
+  //     });
+  // }, []);
   const deletePatient = (id) => {
     fetch(`http://localhost:5000/patients/${id}`, {
       method: "DELETE",
