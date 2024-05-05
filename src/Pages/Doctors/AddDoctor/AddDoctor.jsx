@@ -62,7 +62,7 @@ const AddDoctor = () => {
     e.preventDefault();
     console.log('reached')
     // e.preventDefault();
-    // const formData = new FormData(e.target);
+    const formData = new FormData(e.target);
     // // const name = formData.get("name");
     // formData.append("image", image); // <-- append the image to the formData
     // formData.append("created_at", date);
