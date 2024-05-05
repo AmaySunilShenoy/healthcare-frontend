@@ -19,6 +19,7 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { CalendarMonth } from "@mui/icons-material";
 import Calender from "../../Shared/Calender/Calender";
+import { instance } from "../../../constants/axios";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -66,16 +67,11 @@ const AddDoctor = () => {
     // formData.append("image", image); // <-- append the image to the formData
     // formData.append("created_at", date);
     // formData.append("approved", true);
-    // fetch("http://localhost:5000/doctors", {
-    //   method: "POST",
-    //   body: formData, // <-- send the formData in the body of the request
-    // })
-    //   .then((res) => res.json())
-    //   .then((success) => {
-    //     if (success) {
-    //       alert("Doctor added successfully");
-    //     }
-    //   });
+    instance.post("/doctor", formData).then((res) => {
+      if(res.data.id){
+        alert("Data saved successfully")
+      }
+    });
   };
 
   return (
@@ -111,13 +107,26 @@ const AddDoctor = () => {
         >
           {/* Add Name */}
           <Grid item xs={12} md={4}>
-            <Typography variant="OVERLINE TEXT">Name</Typography>
+            <Typography variant="OVERLINE TEXT">First Name</Typography>
           </Grid>
           <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
             <TextField
               id="standard-basic"
               label="Enter name"
-              name="name"
+              name="first_name"
+              required
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Typography variant="OVERLINE TEXT">Last Name</Typography>
+          </Grid>
+          <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
+            <TextField
+              id="standard-basic"
+              label="Enter name"
+              name="last_name"
               required
               fullWidth
             />
@@ -203,7 +212,7 @@ const AddDoctor = () => {
             />
           </Grid>
           {/* Degrees */}
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Choose Degrees</Typography>
           </Grid>
           <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
@@ -241,7 +250,7 @@ const AddDoctor = () => {
                 ))}
               </Select>
             </Box>
-          </Grid>
+          </Grid> */}
           {/* Salary */}
           <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Salary</Typography>
@@ -263,25 +272,19 @@ const AddDoctor = () => {
             <TextField
               id="standard-basic"
               label="Eg: 8pm-10pm"
-              name="time"
+              name="available_time"
               required
               fullWidth
             />
           </Grid>
           {/* Joining date */}
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Date Of Joining</Typography>
           </Grid>
           <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-6.5rem" } }}>
-            {/* <TextField
-              id="standard-basic"
-              label="Eg: 28-12-20"
-              name="salary"
-              required
-              fullWidth
-            /> */}
+            
             <Calender value={date} setValue={setDate} />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Gender</Typography>
           </Grid>
@@ -302,7 +305,7 @@ const AddDoctor = () => {
             </RadioGroup>
           </Grid>
           {/* add image */}
-          <Grid item xs={12} md={4}>
+          {/* <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Add Image</Typography>
           </Grid>
           <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
@@ -330,7 +333,7 @@ const AddDoctor = () => {
                 }}
               />
             </Fab>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">Decision</Typography>
           </Grid>
