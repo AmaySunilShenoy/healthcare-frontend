@@ -57,7 +57,7 @@ const AddDoctor = () => {
     specialist: "",
     address: "",
     salary: "",
-    available
+    available : "",
   });
   
   const handleChange = (event) => {
