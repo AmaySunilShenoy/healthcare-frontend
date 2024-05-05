@@ -47,18 +47,7 @@ const AddDoctor = () => {
   const [personName, setPersonName] = React.useState([]);
   const [date, setDate] = React.useState(new Date().toDateString());
   const [image, setImage] = useState(null);
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    fee: "",
-    age: "",
-    specialist: "",
-    address: "",
-    salary: "",
-    available_time : "",
-  });
+  const [formData, setFormData] = useState({first_name: "",last_name: "",email: "",phone: "",fee: "",age: "",specialist: "",address: "",salary: "",available_time : ""});
   
   const handleChange = (event) => {
     const {
@@ -78,17 +67,7 @@ const AddDoctor = () => {
     // formData.append("image", image); // <-- append the image to the formData
     // formData.append("created_at", date);
     // formData.append("approved", true);
-    instance.post("/doctor", {
-      "first_name": formData.first_name,
-      "last_name": formData.last_name,
-      "email": formData.email,
-      "phone": formData.phone,
-      "fee": formData.fee,
-      "age": formData.age,
-      "specialist": formData.specialist,
-      "address": formData.address,
-      "salary": formData.salary,
-      "available_time": formData.available_time}).then((res) => {
+    instance.post("/doctor", formData).then((res) => {
       if(res.data.id){
         alert("Data saved successfully")
       }
