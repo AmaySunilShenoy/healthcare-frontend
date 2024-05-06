@@ -173,7 +173,6 @@ const AddPatient = () => {
               required
               fullWidth
               name="name"
-              value="Amay Shenoy"
             />
           </Grid>
           {/* Phone */}
@@ -187,7 +186,6 @@ const AddPatient = () => {
               required
               fullWidth
               name="phone"
-              value="07 80 79 93 47"
             />
           </Grid>
           {/* Age */}
@@ -297,7 +295,6 @@ const AddPatient = () => {
               rows={3}
               fullWidth
               name="address"
-              value="Paris, France"
             />
           </Grid>
           {/* Doctor List */}
