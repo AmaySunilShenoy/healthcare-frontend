@@ -8,7 +8,7 @@ const AppointmentsTable = () => {
     const [appointments, setAppointments] = React.useState([]);
 
     useEffect(() => {
-        instance.get('/appointments').then((response) => {
+        instance.get('/appointment').then((response) => {
             setAppointments(response.data);
             }).catch((error) => {
             console.error(`Error fetching appointments: ${error}`);
