@@ -22,10 +22,19 @@ import Patients from "./Pages/Patients/Patients/Patients";
 import PatientDetails from "./Pages/Patients/PatientsDetails/PatientDetails";
 import ApproveDoctor from "./Pages/Doctors/ApproveDoctor/ApproveDoctor";
 import PublicRoute from "./Pages/PublicRoute/PublicRoute";
+import AppointmentsTable from "./Pages/Appointments/AppointmentTable";
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
+import {Authenticator} from '@aws-amplify/ui-react';
+import "@aws-amplify/ui-react/styles.css";
+
+Amplify.configure(awsconfig);
 
 
 function App() {
   return (
+    <Authenticator>
+      {({ signOut, user }) => (
     <div className="App">
       {/* <AuthProvider>
 
@@ -39,11 +48,15 @@ function App() {
           
           {/* NESTED ROUTING APPLIED */}
           <Route path="/" element={<PublicRoute />}>
-            <Route path="/" element={<Dashboard />} >
+            <Route path="/" element={<Dashboard signOut={signOut}/>} >
             <Route index element={<Home></Home>} />
             <Route path="doctors" element={<PatientViewDoctor />} />
             <Route path="addDoctor" element={<AddDoctor />} />
             <Route path="approveDoctor" element={<ApproveDoctor />} />
+            <Route path="appointments" element={<AppointmentsTable />} />
+              <Route path="/appointments/create" element={<AddPatient />} />
+              <Route path="/appointments/upcoming" element={<AppointmentsTable />} />
+              <Route path="/appointments/history" element={<AddPatient />} />
             <Route path="deleteDoctor" element={<DeleteDoctor />} />
             <Route path="updateDoctor" element={<FindDoctor />} />
             <Route path="patients" element={<Patients />} />
@@ -65,6 +78,8 @@ function App() {
         <Footer></Footer>
       </Router>
     </div>
+    )}
+    </Authenticator>
   );
 }
 

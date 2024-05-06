@@ -5,6 +5,7 @@ import {
   Grid,
   Radio,
   RadioGroup,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
@@ -13,7 +14,8 @@ import { NavLink, useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Calender from "../../Shared/Calender/Calender";
 import { useState } from "react";
-
+import { instance } from "../../../constants/axios";
+import { errorToast, successToast } from "../../../constants/toasts";
 
 const AddPatient = () => {
   // const theme = useTheme();
@@ -88,9 +90,10 @@ const AddPatient = () => {
     const weight = formData.get("weight");
     // const SelectedPackage = packageName;
     const address = formData.get("address");
-    const medicalHistory = formData.get("medicalHistory");
+    const appointment_type = formData.get("medicalHistory");
     const gender = formData.get("radio-buttons-group");
     const blood = formData.get("blood");
+    const time = formData.get("time");
     const doctorName = doctorInfo.name;
     const doctorEmail = doctorInfo.email;
     const doctorPhone = doctorInfo.phone;
@@ -105,7 +108,7 @@ const AddPatient = () => {
       age,
       weight,
       address,
-      medicalHistory,
+      appointment_type,
       // file upload needed
       // SelectedPackage,
       // file,
@@ -128,20 +131,15 @@ const AddPatient = () => {
     //   email,
     //   value
     // );
-    fetch("http://localhost:5000/appoinments", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((success) => {
-        if (success) {
-          alert("Appointment Created Successfully");
-        }
-      });
-  };
+    instance.post("/appointment", { doctorName: doctorName, appointment_type: appointment_type, appointment_date: date, appointment_time: time }).then((res) => {
+      if (res.data.id) {
+        successToast('Appointment Booked Successfully!')
+      } else {
+        errorToast('Appointment Booking Failed!')
+      }
+    }
+    );
+  }
 
   return (
     <Box
@@ -151,43 +149,7 @@ const AddPatient = () => {
         background: "#fff",
       }}
     >
-      <Box style={{ display: "flex" }}>
-        <Button variant="contained" sx={{ fontWeight: 700 }}>
-          <NavLink
-            to="/doctors"
-            style={{ textDecoration: "none", width: "100%", color: "#fff" }}
-          >
-            Doctors List
-          </NavLink>
-        </Button>
-        {/* Package button */}
-        <Button
-          variant="contained"
-          sx={{ ml: 2, fontWeight: 700 }}
-          color="warning"
-        >
-          <NavLink
-            to="/packages"
-            style={{ textDecoration: "none", width: "100%", color: "#fff" }}
-          >
-            Our Packages
-          </NavLink>
-        </Button>
-        {/* selected doctor info button */}
-        <Button
-          variant="contained"
-          sx={{ ml: 2, fontWeight: 700 }}
-          color="success"
-        >
-          <NavLink
-            to={`/appointment/${doctorEmail}`}
-            style={{ textDecoration: "none", width: "100%", color: "#fff" }}
-          >
-            Selected Doctor Info
-          </NavLink>
-        </Button>
-      </Box>
-      <hr></hr>
+
       <form ref={form} onSubmit={handleSubmit}>
         <Grid
           container
@@ -211,6 +173,7 @@ const AddPatient = () => {
               required
               fullWidth
               name="name"
+              value="Amay Shenoy"
             />
           </Grid>
           {/* Phone */}
@@ -224,6 +187,7 @@ const AddPatient = () => {
               required
               fullWidth
               name="phone"
+              value="07 80 79 93 47"
             />
           </Grid>
           {/* Age */}
@@ -252,7 +216,7 @@ const AddPatient = () => {
               name="weight"
             />
           </Grid>
-          
+
           {/* Appointment date */}
           <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">SELECT DATE</Typography>
@@ -309,6 +273,18 @@ const AddPatient = () => {
               </Select>
             </Box> */}
           </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="OVERLINE TEXT">SELECT TIME</Typography>
+          </Grid>
+          <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
+            <TextField
+              id="standard-basic"
+              label="Enter time of appointment"
+              required
+              fullWidth
+              name="time"
+            />
+          </Grid>
           {/* Address */}
           <Grid item xs={12} md={4}>
             <Typography variant="OVERLINE TEXT">ADDRESS</Typography>
@@ -317,12 +293,29 @@ const AddPatient = () => {
             <TextField
               variant="outlined"
               id="standard-basic"
-              label="Enter your address"
               multiline
               rows={3}
               fullWidth
               name="address"
+              value="Paris, France"
             />
+          </Grid>
+          {/* Doctor List */}
+          <Grid item xs={12} md={4}>
+            <Typography variant="OVERLINE TEXT">DOCTOR</Typography>
+          </Grid>
+          <Grid item xs={12} md={8} sx={{ marginLeft: { md: "-5rem" } }}>
+            <Select
+              variant="outlined"
+              id="standard-basic"
+              multiline
+              rows={3}
+              fullWidth
+            >
+              <option value="Dr. Samantha Jacob">Dr. Samantha Jacob (Dentist)</option>
+              <option value="Dr. John Lenon">Dr. John Lenon (Gastroentoligist)</option>
+              <option value="Dr. Joe Barns">Dr. Joe Barns (General Physician)</option>
+            </Select>
           </Grid>
           {/* Medical History */}
           <Grid item xs={12} md={4}>
@@ -358,6 +351,7 @@ const AddPatient = () => {
               row
               aria-labelledby="radio-buttons-group-label"
               name="radio-buttons-group"
+              defaultValue="male"
               required
             >
               <FormControlLabel value="male" control={<Radio />} label="Male" />

@@ -12,30 +12,30 @@ export default function TodaysDoctors() {
   const [doctors, setDoctors] = React.useState([
     {
       _id: "1",
-      name: "Dr. John Doe",
-      email: "john.email.com",
-      gender: 'male',
-      specialist: 'dentist',
-      fee: 500,
+      name: "Dr. Samantha Jacob",
+      email: "839091u1220",
+      gender: 'Female',
+      specialist: 'Dentist',
+      fee: 600,
       time: "10:00 AM - 12:00 PM",
     },
     {
       _id: "2",
-      name: "Dr. Jane Doe",
-      email: "jane.email.com",
-      gender: 'female',
-      specialist: 'dentist',
-      fee: 500,
-      time: "10:00 AM - 12:00 PM",
+      name: "Dr. John Lenon",
+      email: "8334291u1120",
+      gender: 'Male',
+      specialist: 'Gastroenterologist',
+      fee: 200,
+      time: "9:00 AM - 9:00 PM",
     },
     {
       _id: "3",
-      name: "Dr. Jane Doe",
-      email: "jane.email.com",
-      gender: 'female',
-      specialist: 'dentist',
-      fee: 500,
-      time: "10:00 AM - 12:00 PM",
+      name: "Dr. Joe Barns",
+      email: "46572374663u322",
+      gender: 'Male',
+      specialist: 'General Physician',
+      fee: 300,
+      time: "10:00 AM - 5:00 PM",
     },
   ]);
   // React.useEffect(() => {
@@ -45,15 +45,30 @@ export default function TodaysDoctors() {
   // }, []);
   return (
     <Grid
+    container
+      //   spacing={{ xs: 2, md: 3 }}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+      sx={{
+        margin: "2rem 0",
+        padding: "1rem 1rem",
+        background: "#fff",
+        borderRadius: "0.5rem",
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+        justifyContent: "space-around",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "1rem",
+      }}>
+    <h3 style={{ marginTop: "1rem", textAlign: "left", color: 'black', fontSize: '2rem' }}>
+      Available Doctors
+    </h3>
+    <Grid
       container
       //   spacing={{ xs: 2, md: 3 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
       sx={{
         margin: "2rem 0",
-        padding: "3rem 1rem",
-        background: "#fff",
-        borderRadius: "0.5rem",
-        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+        padding: "1rem 1rem",
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
@@ -121,6 +136,7 @@ export default function TodaysDoctors() {
           </Card>
         </NavLink>
       ))}
+    </Grid>
     </Grid>
   );
 }

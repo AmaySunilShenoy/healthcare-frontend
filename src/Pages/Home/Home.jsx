@@ -13,11 +13,11 @@ const Home = () => {
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
           <Banner></Banner>
-          <DetailsChart></DetailsChart>
-          <UserInfo></UserInfo>
-        </Grid>
+          {/* <DetailsChart></DetailsChart> */}
+          {/* <UserInfo></UserInfo> */}
+      <TodaysDoctors></TodaysDoctors>
+
         <Grid item xs={12} md={4}>
           <Feedback></Feedback>
           <Box style={{
@@ -26,12 +26,11 @@ const Home = () => {
             borderRadius: '0.3rem',
             boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.05)',
           }}>
-            <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '20px', fontFamily:'monospace' }}><strong>Parcentage of patients</strong></Typography>
-            <RadialChart></RadialChart>
+            {/* <Typography sx={{ fontSize: '1.2rem', textAlign: 'left', paddingLeft: '20px', paddingTop: '20px', fontFamily:'monospace' }}><strong>Parcentage of patients</strong></Typography> */}
+            {/* <RadialChart></RadialChart> */}
           </Box>
         </Grid>
       </Grid>
-      <TodaysDoctors></TodaysDoctors>
       {/* <Map></Map> */}
     </div>
   )

@@ -4,7 +4,7 @@ import { GiCherish } from "react-icons/gi";
 import { FiUsers } from "react-icons/fi";
 import { TbBed } from "react-icons/tb";
 import { FaAccessibleIcon, FaAmbulance, FaUserTie } from "react-icons/fa";
-import { MdPersonPin } from "react-icons/md";
+import { MdOutlineDocumentScanner, MdPersonPin } from "react-icons/md";
 
 const style = {
   fontSize: '3rem',
@@ -15,41 +15,23 @@ const style = {
 }
 const InfoList = [
   {
-    icon: <GiCherish style={style} />,
-    count: 128,
-    title: 'Doctors',
-    description: '3 doctors joined today'
+    icon: <MdOutlineDocumentScanner style={style} />,
+    count: 0,
+    title: 'Documents',
+    description: ''
   },
   {
-    icon: <FaAccessibleIcon style={style} />,
-    count: 155000,
-    title: 'Patients',
-    description: '122 new patients admitted'
+    icon: <GiCherish style={style} />,
+    count: 155,
+    title: 'Available Doctors',
+    description: ''
   },
   {
     icon: <FiUsers style={style} />,
-    count: 452,
-    title: 'Staffs',
-    description: '12 stuffs are on vacation'
+    count: 0,
+    title: 'Upcoming Appointments',
+    description: ''
   },
-  {
-    icon: <TbBed style={style} />,
-    count: 142,
-    title: 'Beds',
-    description: '10 bed remaining usable'
-  },
-  {
-    icon: <FaAmbulance style={style} />,
-    count: 120,
-    title: 'Ambulence',
-    description: '19 Ambulence In service'
-  },
-  {
-    icon: <MdPersonPin style={style} />,
-    count: 12,
-    title: 'Representative',
-    description: '6 Representative is active'
-  }
 ];
 
 const BannerItem = ({ icon, count, title, description }) => (

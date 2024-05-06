@@ -6,7 +6,7 @@ import Header from '../../components/Dashboard/Header';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import MainContent from '../../components/Dashboard/MainContent';
 
-export default function NewHeader() {
+export default function NewHeader({signOut}) {
     const [open, setOpen] = React.useState(true);
     const [openInbox, setOpenInbox] = React.useState(false);
 
@@ -60,7 +60,7 @@ export default function NewHeader() {
             }
         }>
             <Header open={open} handleDrawerOpen={handleDrawerOpen} />
-            <Sidebar openDrawer={open} handleDrawerClose={handleDrawerClose} />
+            <Sidebar openDrawer={open} handleDrawerClose={handleDrawerClose} signOut={signOut} />
             <MainContent open={open} />
         </Box>
     );

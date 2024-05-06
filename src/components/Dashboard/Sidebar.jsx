@@ -4,11 +4,11 @@ import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import { NavLink } from 'react-router-dom';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Button, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { Collapse } from '@mui/material';
 import { Toolbar, Typography } from '@mui/material';
 import { IconButton } from '@mui/material';
-import { ChevronLeft as ChevronLeftIcon } from '@mui/icons-material';
+import { ChevronLeft as ChevronLeftIcon, LogoutRounded } from '@mui/icons-material';
 
 // import your icons
 import { FcHome } from 'react-icons/fc';
@@ -18,6 +18,7 @@ import { MdOutlinePersonAddAlt, MdOutlinePersonRemoveAlt1, MdOutlinePersonSearch
 import { TbBed } from 'react-icons/tb';
 import { FaRunning } from 'react-icons/fa';
 import { FaMandalorian } from 'react-icons/fa';
+import { signOut } from 'aws-amplify/auth';
 
 // const StyledDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(
 //     ({ theme, open }) => ({
@@ -86,67 +87,31 @@ const SidebarInfo = [
         text: 'Overview',
     },
     {
-        to: '/doctors',
-        icon: <FaUserNurse style={{ color: '#000', fontSize: '1.5rem', marginRight: '1rem' }} />,
-        text: 'Doctors',
+        to:'/',
+        icon: <BsCardChecklist style={{ color: '#000', fontSize: '1.5rem' }} />,
+        text: 'Appointments',
         nested: [
             {
-                to: '/appointment',
-                icon: <BsCardChecklist style={{ color: '#000', fontSize: '1.3rem' }} />,
-                text: 'Appointment',
+                to: '/appointments/create',
+                icon: <MdOutlinePersonAddAlt style={{ color: '#000', fontSize: '1.5rem' }} />,
+                text: 'Create',
             },
             {
-                to: '/approveDoctor',
-                icon: <BsPersonLinesFill style={{ color: '#000', fontSize: '1.4rem' }} />,
-                text: 'Approval',
+                to: '/appointments/upcoming',
+                icon: <FaRunning style={{ color: '#000', fontSize: '1.5rem' }} />,
+                text: 'Upcoming',
             },
             {
-                to: '/addDoctor',
-                icon: <MdOutlinePersonAddAlt style={{ color: '#000', fontSize: '1.4rem' }} />,
-                text: 'Add Doctor',
+                to: '/appointments/history',
+                icon: <BsPersonLinesFill style={{ color: '#000', fontSize: '1.5rem' }} />,
+                text: 'History',
             },
-            {
-                to: '/deleteDoctor',
-                icon: <MdOutlinePersonRemoveAlt1 style={{ color: '#000', fontSize: '1.4rem' }} />,
-                text: 'Delete Doctor',
-            },
-            {
-                to: '/updateDoctor',
-                icon: <MdOutlinePersonSearch style={{ color: '#000', fontSize: '1.4rem' }} />,
-                text: 'Find Doctor',
-            },
-        ]
-    },
-    {
-        to: '#',
-        icon: <TbBed style={{ color: '#000', fontSize: '1.5rem' }} />,
-        text: 'Patients',
-        nested: [
-            {
-                to: '/patients',
-                icon: <BsCardChecklist style={{ color: '#000', fontSize: '1.3rem' }} />,
-                text: 'Patient List',
-            },
-            {
-                to: '/viewDoctors',
-                icon: <MdOutlinePersonAddAlt style={{ color: '#000', fontSize: '1.4rem' }} />,
-                text: 'Add Patient',
-            },
-        ]
-    },
-    {
-        to: '/Staffs',
-        icon: <FaRunning style={{ color: '#000', fontSize: '1.5rem' }} />,
-        text: 'Staffs',
-    },
-    {
-        to: '/login',
-        icon: <FaRunning style={{ color: '#000', fontSize: '1.5rem' }} />,
-        text: 'Login',
+            
+        ],
     },
 ]
 
-export default function Sidebar({ openDrawer, handleDrawerClose }) {
+export default function Sidebar({ openDrawer, handleDrawerClose, signOut }) {
     return (
         <Drawer
             sx={{
@@ -178,6 +143,7 @@ export default function Sidebar({ openDrawer, handleDrawerClose }) {
                         return (
                             <SidebarOption key={index} to={item.to} icon={item.icon} text={item.text} nested={item.nested}/>
                     )})}
+                    <Button onClick={signOut}><LogoutRounded /> Logout</Button>
                 </List>
         </Drawer>
     );

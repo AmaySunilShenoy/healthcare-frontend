@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import { Button, Card, TextField, Typography } from "@mui/material";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Gender from "../../Shared/Gender/Gender";
+import { successToast } from "../../../constants/toasts";
 
 const PatientReg = () => {
   const [loginData, setLoginData] = useState({});
@@ -26,7 +27,8 @@ const PatientReg = () => {
     //   alert("Your Password did not matched");
     // }
     // registerUser(loginData.name, loginData.email, loginData.password, navigate)
-    alert('Successfully logged in!')
+    successToast('Successfully logged in!')
+    navigate('/')
   };
 
   return (
