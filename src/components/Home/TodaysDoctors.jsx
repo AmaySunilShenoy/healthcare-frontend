@@ -16,6 +16,7 @@ export default function TodaysDoctors() {
       email: "839091u1220",
       gender: 'Female',
       specialist: 'Dentist',
+      image:"https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg?w=996&t=st=1659640512~exp=1659641112~hmac=3587a885638b8ca8621583b406c74569e2474e99107b4a5859e96a0e65bfa567.jpg",
       fee: 600,
       time: "10:00 AM - 12:00 PM",
     },
@@ -23,6 +24,7 @@ export default function TodaysDoctors() {
       _id: "2",
       name: "Dr. John Lenon",
       email: "8334291u1120",
+      image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Ffr%2Fsearch%2Fdoctor&psig=AOvVaw03vscgsHbqWE9Zxn-OpNw2&ust=1715067847011000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDB1t_D-IUDFQAAAAAdAAAAABAE",
       gender: 'Male',
       specialist: 'Gastroenterologist',
       fee: 200,
@@ -33,6 +35,7 @@ export default function TodaysDoctors() {
       name: "Dr. Joe Barns",
       email: "46572374663u322",
       gender: 'Male',
+      image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.menshealth.com%2Fhealth%2Fa40971698%2F5-questions-your-doctor-wishes-youd-ask%2F&psig=AOvVaw03vscgsHbqWE9Zxn-OpNw2&ust=1715067847011000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLDB1t_D-IUDFQAAAAAdAAAAABAZ",
       specialist: 'General Physician',
       fee: 300,
       time: "10:00 AM - 5:00 PM",
@@ -92,7 +95,7 @@ export default function TodaysDoctors() {
               <CardMedia
                 component="img"
                 height="160"
-                image="https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg?w=996&t=st=1659640512~exp=1659641112~hmac=3587a885638b8ca8621583b406c74569e2474e99107b4a5859e96a0e65bfa567.jpg"
+                image={doctor.image}
                 alt="green iguana"
               />
               <CardContent sx={{ textAlign: "left" }}>
