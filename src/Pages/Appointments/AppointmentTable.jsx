@@ -9,7 +9,7 @@ const AppointmentsTable = () => {
 
     useEffect(() => {
         instance.get('/appointment').then((response) => {
-            setAppointments(response.data);
+            setAppointments(JSON.parse(response.data.body));
             }).catch((error) => {
             console.error(`Error fetching appointments: ${error}`);
         }
