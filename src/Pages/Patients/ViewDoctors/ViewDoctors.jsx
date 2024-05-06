@@ -16,11 +16,11 @@ const ViewDoctors = () => {
 
   React.useEffect(() => {
     instance.get("/doctor")
-      .then((res) => res.json())
-      .then((data) => {
-        setDoctors(data);
-        setLoading(false); // Set loading to false when data fetching is complete
-      });
+      .then((res) => {
+        setDoctors(res.data)
+          setLoading(false);
+      }
+    )
   }, []);
 
   return (
