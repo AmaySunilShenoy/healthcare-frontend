@@ -8,13 +8,14 @@ import Rating from "@mui/material/Rating";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { NavLink } from "react-router-dom";
 import Skeleton from 'react-loading-skeleton';
+import { instance } from "../../../constants/axios";
 
 const ViewDoctors = () => {
   const [doctors, setDoctors] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("http://localhost:5000/approvedDoctors")
+    instance.get("/doctor")
       .then((res) => res.json())
       .then((data) => {
         setDoctors(data);
@@ -100,14 +101,14 @@ const ViewDoctors = () => {
             >
               <Card elevation={3}>
                 <CardActionArea sx={{display: 'flex'}}>
-                  <img
+                  {/* <img
                     src={`data:image/png;base64,${doctor.image}`}
                     alt="doctor Image"
                     style={{ width: "300px", height: "200px", borderRadius: "3px" }}
-                  />
+                  /> */}
                   <CardContent sx={{ textAlign: "left" }}>
                     <Typography gutterBottom variant="h6" component="div">
-                      {doctor.name}
+                      {doctor.first_name} {doctor.last_name}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -141,7 +142,7 @@ const ViewDoctors = () => {
                   }}
                 >
                   <AccessTimeIcon sx={{ mr: 2 }} />
-                  <Typography> {doctor.time}</Typography>
+                  <Typography> {doctor.available_time}</Typography>
                 </CardActions>
               </Card>
             </NavLink>
