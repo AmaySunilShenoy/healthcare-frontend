@@ -64,10 +64,10 @@ const AppointmentsTable = () => {
                 <TableBody>
                   {appointments.map((appointment, index) => (
                     <TableRow key={index}>
-                      <TableCell>{appointment.appointmentDate}</TableCell>
-                      <TableCell>{appointment.appointmentTime}</TableCell>
-                      <TableCell>{appointment.appointmentType}</TableCell>
-                      <TableCell>{appointment.doctorName}</TableCell>
+                      <TableCell>{appointment.appointment_date}</TableCell>
+                      <TableCell>{appointment.appointment_time}</TableCell>
+                      <TableCell>{appointment.appointment_type}</TableCell>
+                      <TableCell>Dr. Samantha Jacob</TableCell>
                       <TableCell sx={{ margin: '10px', display: 'flex', gap: '10px', alignItems: 'center' }}>
                         <BsPencil />
                         <CancelPresentation />
