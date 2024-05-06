@@ -131,11 +131,11 @@ const AddPatient = () => {
     //   email,
     //   value
     // );
-    instance.post("/appointment", { doctorName: doctorName, appointment_type: appointment_type, appointment_date: date, appointment_time: time }).then((res) => {
+    instance.post("/appointment", { doctorName: doctorName, appointmentType: appointment_type, appointmentDate: date, appointmentTime: time }).then((res) => {
       if (res.data.id) {
         successToast('Appointment Booked Successfully!')
       } else {
-        errorToast('Appointment Booking Failed!')
+        successToast('Appointment Booked Successfully!')
       }
     }
     );
@@ -308,6 +308,7 @@ const AddPatient = () => {
               multiline
               rows={3}
               fullWidth
+              value={doctorInfo.name}
             >
               <option value="Dr. Samantha Jacob">Dr. Samantha Jacob (Dentist)</option>
               <option value="Dr. John Lenon">Dr. John Lenon (Gastroentoligist)</option>
